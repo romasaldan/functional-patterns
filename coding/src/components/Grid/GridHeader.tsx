@@ -1,7 +1,8 @@
 import { createCircularStatefulGenerator } from "../../utils/createStatefulGenerator";
 import { SortingIcon } from "./SortingIcon";
-import { GridSortOptions, GridSortState } from "./state/reducer";
+import { GridSortState } from "./state/reducer";
 import { ColumnDef, GridProps, TableDataValue } from "./types";
+import { GridSortOptions } from "./utils/sortUtils";
 
 interface GridHeaderProps<T extends TableDataValue> {
   onClick?: (def: ColumnDef<T>, value: GridSortOptions) => void;
@@ -27,11 +28,11 @@ export const GridHeader = <T extends TableDataValue>({
           return (
             <th
               key={def.id}
-              onClick={() =>
-                onClick?.(def, sortStatesGenerator(currentSortState))
-              }
+              onClick={() => {
+                if (sort) onClick?.(def, sortStatesGenerator(currentSortState));
+              }}
             >
-              {def.label} <SortingIcon state={currentSortState} />
+              {def.label} {sort && <SortingIcon state={currentSortState} />}
             </th>
           );
         })}

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { GridSortOptions } from "./state/reducer";
+import { GridSortOptions } from "./utils/sortUtils";
 
 const arrowValues: Record<GridSortOptions, ReactNode> = {
   asc: <span>&uarr;</span>,

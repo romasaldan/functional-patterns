@@ -1,8 +1,9 @@
 import { ColumnDef, TableDataValue } from "../types";
-import { GridSortOptions } from "./reducer";
+import { GridSortOptions } from "../utils/sortUtils";
 
 export enum GridEvents {
   SortClick = "SortClick",
+  NewTableDataReceived = "NewTableDataReceived",
 }
 
 interface GridAction {
@@ -16,4 +17,11 @@ export interface SortGridAction<T extends TableDataValue> extends GridAction {
   };
 }
 
-export type GridActions<T extends TableDataValue> = SortGridAction<T>;
+export interface NewTableDataReceivedAction<T extends TableDataValue>
+  extends GridAction {
+  payload: T[];
+}
+
+export type GridActions<T extends TableDataValue> =
+  | SortGridAction<T>
+  | NewTableDataReceivedAction<T>;

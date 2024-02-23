@@ -1,7 +1,8 @@
-import { GridSortOptions, GridSortState } from "../state/reducer";
+import { GridSortState } from "../state/reducer";
 import { ColumnDef, TableDataValue, cellValue } from "../types";
 import { getColumnValue } from "./getColumnValue";
 
+export type GridSortOptions = "asc" | "desc" | "none";
 type SortGridComparator = (prev: cellValue, next: cellValue) => number;
 const standardize = (value: cellValue) =>
   typeof value === "string" ? value.toLowerCase() : value;

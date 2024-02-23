@@ -12,4 +12,9 @@ export interface GridProps<T extends TableDataValue> {
   data: T[];
   columnDefs: ColumnDef<T>[];
   sort?: boolean;
+  realTimeHighlight?: boolean;
+}
+
+export interface GridBodyProps<T extends TableDataValue> extends GridProps<T> {
+  prevData: T[];
 }

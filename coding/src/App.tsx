@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Grid } from "./components/Grid/Grid";
 import { ColumnDef, TableDataValue } from "./components/Grid/types";
@@ -44,13 +44,32 @@ const columnDefs: ColumnDef<Person>[] = [
 ];
 
 function App() {
+  console.log("render");
+  const [data, setData] = useState(rowData);
+
+  setTimeout(() => {
+    console.log(1);
+    setData((rowData) =>
+      rowData.map((row) => ({
+        ...row,
+        age: row.age + Math.sign(Math.random() - 0.5),
+      }))
+    );
+  }, 2000);
+  console.log(data);
+
   return (
     <div className="App">
       <header className="App-header">
         <p>Building simple grid</p>
       </header>
 
-      <Grid data={rowData} columnDefs={columnDefs} />
+      <Grid
+        data={data}
+        columnDefs={columnDefs}
+        sort={false}
+        realTimeHighlight
+      />
     </div>
   );
 }
