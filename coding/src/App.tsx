@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Grid } from "./components/Grid/Grid";
 import { ColumnDef, TableDataValue } from "./components/Grid/types";
@@ -57,6 +57,15 @@ function App() {
     );
   }, 2000);
   console.log(data);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://telegram.org/js/telegram-widget.js?22";
+    // script.setAttribute('data-telegram-login', botName);
+    script.async = true;
+    script.setAttribute("data-telegram-login", "romasnmail_bot");
+    document.body.appendChild(script);
+  }, []);
 
   return (
     <div className="App">
