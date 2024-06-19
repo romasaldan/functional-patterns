@@ -144,7 +144,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p onClick={reset}>Building simple grid</p>
+        <p>Building simple grid</p>
       </header>
 
       <Grid
@@ -160,6 +160,7 @@ function App() {
           height: "25px",
           position: "relative",
         }}
+        onClick={reset}
       >
         <div style={{ position: "absolute", opacity: 0 }} ref={ref}></div>
       </div>
