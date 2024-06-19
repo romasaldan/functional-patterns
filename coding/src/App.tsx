@@ -155,7 +155,7 @@ function App() {
       />
       <div
         style={{
-          background: "red",
+          background: authorized ? "green" : "red",
           width: "25px",
           height: "25px",
           position: "relative",
