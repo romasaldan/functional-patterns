@@ -13,7 +13,7 @@ export const GridBody = <T extends TableDataValue>({
   prevData,
   realTimeHighlight,
 }: GridBodyProps<T>) => {
-  console.log(prevData, data, "prevData, data");
+  // console.log(prevData, data, "prevData, data");
 
   return (
     <tbody>
